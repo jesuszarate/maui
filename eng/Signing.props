@@ -25,6 +25,20 @@
     <FileSignInfo Include="SegoeUI-Semibold.ttf" CertificateName="3PartyScriptsSHA2" />
   </ItemGroup>
 
+  <ItemGroup Label="VS Signing Compliance">
+    <!-- Template .js files (e.g. reconnectmodal.razor.js in maui-blazor-solution)
+         are customer-modifiable after project creation, so direct Authenticode
+         signing is inappropriate — the // SIG // block would be visible to users
+         and break on modification. Mark as None here; signing compliance for
+         these files is handled via catalog (.cat) signing. -->
+    <FileExtensionSignInfo Include=".js" CertificateName="None" />
+
+    <!-- The .cat catalog file covers the customer-modifiable .js files above.
+         The catalog is generated during the template nupkg build and signed
+         so Windows can verify file integrity through the catalog. -->
+    <FileExtensionSignInfo Include=".cat" CertificateName="MicrosoftDotNet500" />
+  </ItemGroup>
+
   <ItemGroup>
     <ItemsToSign Include="$(ArtifactsShippingPackagesDir)\**\*.msi" Condition="'$(PostBuildSign)' != 'true'" />
     <ItemsToSign Include="$(ArtifactsShippingPackagesDir)**\*.wixpack.zip" Condition="'$(PostBuildSign)' != 'true'" />
