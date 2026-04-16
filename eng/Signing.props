@@ -23,6 +23,8 @@
     <FileSignInfo Include="OpenSans-Semibold.ttf" CertificateName="3PartyScriptsSHA2" />
     <FileSignInfo Include="FluentSystemIcons-Regular.ttf" CertificateName="3PartyScriptsSHA2" />
     <FileSignInfo Include="SegoeUI-Semibold.ttf" CertificateName="3PartyScriptsSHA2" />
+
+    <FileSignInfo Include="ReconnectModal.razor.js" CertificateName="Microsoft400" />
   </ItemGroup>
 
   <ItemGroup>
