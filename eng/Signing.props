@@ -25,6 +25,12 @@
     <FileSignInfo Include="SegoeUI-Semibold.ttf" CertificateName="3PartyScriptsSHA2" />
   </ItemGroup>
 
+  <ItemGroup Label="Customer-modifiable template files">
+    <!-- Skip Authenticode — this JS is included in customer applications and users edit it.
+         Catalog signing should be handled upstream in dotnet/aspnetcore. -->
+    <FileSignInfo Include="ReconnectModal.razor.js" CertificateName="None" />
+  </ItemGroup>
+
   <ItemGroup>
     <ItemsToSign Include="$(ArtifactsShippingPackagesDir)\**\*.msi" Condition="'$(PostBuildSign)' != 'true'" />
     <ItemsToSign Include="$(ArtifactsShippingPackagesDir)**\*.wixpack.zip" Condition="'$(PostBuildSign)' != 'true'" />
@@ -32,4 +38,4 @@
     <ItemsToSign Include="$(ArtifactsShippingPackagesDir)\**\*.zip" Condition="'$(PostBuildSign)' != 'true'" />
     <ItemsToSignPostBuild Include="$(ArtifactsShippingPackagesDir)\**\*.zip" Condition="'$(PostBuildSign)' == 'true'" />
   </ItemGroup>
-</Project>   
+</Project>
